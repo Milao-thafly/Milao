@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
+        {% block stylesheets %}
+            {{ encore_entry_link_tags('app') }}
+        {% endblock %}
+
+        {% block javascripts %}
+            {{ encore_entry_script_tags('app') }}
+        {% endblock %}
+    </head>
+    
+        {% block body %}
+            <header>
+                    <nav id="navbar">
+                    <a href="{{ path('app_homepage') }}" class="logo"
+                        aria-label="visit homepage"
+                        aria-current="page"><img src="./Assets/img/fly_PNG3950.png alt="Bzzz icon">
+                        <span> Flies everywhere </span>
+                    </a>
+                            <div class="nav-links">
+                                    <button class="hamburger" type="button"
+                                        aria-label="Toggle navigation"
+                                        aria-expanded="false">
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                    </button>
+                            </div>
+                            <div class="navlinks-container">
+                                <a href="#" aria-current="page"Home</a>
+                                <a href="#">Ticket</a>
+                                <a href="#">Dates</a>
+                                <a href="#">Contact</a>
+                                <a href="#">1312</a>
+                            </div>
+                            <div>
+                                <a href="#" class="user_toggler"
+                                aria-label="Sign in page">
+                                <img src="./assets/img/fly_PNG3950.png" alt="user_icon">
+                                </a>
+
+                                <div> class="signs-btns">
+                                    <button type="button">Sign In</button>
+                                    <button type="button">Sign Up</button>
+                                </div>
+                            </div>
+                </nav>
+            </header>
+        {% endblock %}
+    
+</html>
