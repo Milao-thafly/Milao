@@ -56,7 +56,7 @@ nav {
     content: "";
     cursor: alias;
     display: block;
-    position: absolute;
+    position: relative;
     bottom: -3px;
     width: 100%;
     height: 1px;
@@ -131,7 +131,7 @@ header{
 
 */ 
 
-.background-slideshow{
+/* .background-slideshow{
 position:static;
 
 
@@ -154,14 +154,16 @@ position:static;
 
 
 
-/* .button_slide{
-    height: 25px;
-
+.button_slide{
     align-items: center;
-    justify-content: center;
     width: 100%;
-    height: 720px;
+    height: 10vh;
+    background: no-repeat;
+
 } */
 
-
+.swiper-wrapper{
+    height:500px;
+    width: 100%;
+}
 

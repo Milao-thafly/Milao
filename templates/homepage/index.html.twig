@@ -12,7 +12,7 @@
             <nav id="navbar">
                 <a href="{{ path('app_homepage') }}" class="logo"
                     aria-label="visit homepage"
-                    aria-current="page"><img src="./Assets/img/fly_PNG3950.png alt="Bzzz icon">
+                    aria-current="page"><img src="./Assets/img/fly_PNG3950.png" alt="Bzzz icon">
                     <span> Flies everywhere </span>
                 </a>
                         <div class="nav-links">
@@ -47,14 +47,41 @@
         </header>
 
 <main>
-    <section class="background-slideshow image1" id="background">
+    {# <section class="background-slideshow image1" id="background">
         <div class="slideshow">
             <div class="button_slide"></div>
             <button class="button-left" onclick="plusDivs(-1)">&#10094;</button>
             <button class="button-right" onclick="plusDivs(+1)">&#10095;</button>
         </div>
+    </section> #}
+    {# <div class="swiper">
+
+        <div class="swiper-wrapper">
+            <div class="swiper-slide" style="background-image:url(/assets/img/n.jpg)">Slide 1</div>
+            <div class="swiper-slide"style="background-image:url(/assets/img/0068.png)">Slide 2</div>
+            <div class="swiper-slide"style="background-image:url(/assets/img/0000.png)">Slide 3</div>
+        </div>
+    <div class="swiper-pagination"></div>
+
+    <div class="swiper-button-prev></div>
+    <div class"swiper-button-next"></div>
+
+    <div class="swiper-scrollbar"></div>
+    </div> #}
+    <section aria-label="Newest Photo">
+    <div class="caroussel">
+        <ul>
+            <li class="slide">
+                <img src={{ asset('img/n.jpg') }}
+                <img src="./assets/img/0068.png" alt="forest shid">
+                <img src="./assets/img/0000.png" alt="3D hd">
+
+            </li>
+        </ul>
+    </div>
+
     </section>
-    
+
    
 
 </main>
