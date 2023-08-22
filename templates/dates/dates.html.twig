@@ -2,12 +2,18 @@
 
 {% block title %} Dates {% endblock %}
 
+{% block current_css %}
+    <link rel="stylesheet" href="{{ asset('asset/style/dates.css') }}">
+{% endblock %}
+
+
+
 {% block body %}
 <header>
                     <nav id="navbar">
                     <a href="{{ path('app_homepage') }}" class="logo"
                         aria-label="visit homepage"
-                        aria-current="page"><img src="./Assets/img/fly_PNG3950.png alt="Bzzz icon">
+                        aria-current="page"><img src="./Assets/img/fly_PNG3950.png" alt="Bzzz icon">
                         <span> Flies everywhere </span>
                     </a>
                             <div class="nav-links">
@@ -38,5 +44,22 @@
                                 </div>
                             </div>
                 </nav>
-            </header>
+</header>
+
+<main>
+<div class="container_list">
+    <input id="inputFieldList" type="text"> 
+    <span id="ticketNumber">0</span>
+    <button class="btn_increase">&#8657;</button>
+    <button class="btn_decrease">&#8659;</button>
+    <div class="to-dosDate" id="toDoContainer">
+    
+    </div>
+</div>
+</main>
+{% endblock %}
+
+{% block current_javascript %}
+{{ encore_entry_script_tags('list') }}
+{{ encore_entry_script_tags('addTicket') }}
 {% endblock %}
