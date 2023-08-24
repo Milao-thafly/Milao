@@ -32,10 +32,10 @@ class User
     private ?string $lastName = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $Adress = null;
+    private ?string $adress = null;
 
     #[ORM\Column(length: 100)]
-    private ?string $City = null;
+    private ?string $city = null;
 
     #[ORM\Column(length: 255)]
     private ?string $email = null;
@@ -47,7 +47,7 @@ class User
     private ?int $postCode = null;
 
     #[ORM\Column]
-    private ?int $Telephone = null;
+    private ?int $phone = null;
 
     public function getId(): ?int
     {
@@ -128,24 +128,24 @@ class User
 
     public function getAdress(): ?string
     {
-        return $this->Adress;
+        return $this->adress;
     }
 
     public function setAdress(string $Adress): static
     {
-        $this->Adress = $Adress;
+        $this->adress = $adress;
 
         return $this;
     }
 
     public function getCity(): ?string
     {
-        return $this->City;
+        return $this->city;
     }
 
-    public function setCity(string $City): static
+    public function setCity(string $city): static
     {
-        $this->City = $City;
+        $this->City = $city;
 
         return $this;
     }
