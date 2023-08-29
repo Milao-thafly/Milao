@@ -23,6 +23,7 @@ Encore
     .addEntry('app', './assets/app.js')
     .addEntry('list', './assets/Javascript/list.js')
     .addEntry('addTicket', './assets/Javascript/addTicket.js')
+    .addStyleEntry('merch', './assets/styles/merch.css')
 
 
 

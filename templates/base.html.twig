@@ -16,11 +16,11 @@
     </head>
     
         {% block body %}
-            <header>
+<header>
                     <nav id="navbar">
                     <a href="{{ path('app_homepage') }}" class="logo"
                         aria-label="visit homepage"
-                        aria-current="page"><img src="./Assets/img/fly_PNG3950.png alt="Bzzz icon">
+                        aria-current="page"><img src={{ asset('../assets/img/fly_PNG3950.png')}}" alt="Bzzz icon">
                         <span> Flies everywhere </span>
                     </a>
                             <div class="nav-links">
@@ -33,11 +33,11 @@
                                     </button>
                             </div>
                             <div class="navlinks-container">
-                                <a href="#" aria-current="page"Home</a>
-                                <a href="#">Ticket</a>
-                                <a href="#">Dates</a>
-                                <a href="#">Contact</a>
-                                <a href="#">1312</a>
+                                    <a href="#" aria-current="page"Home</a>
+                                    <a href="{{ path('app_merch') }}">Merch</a>
+                                    <a href="{{ path('app_dates') }}">Dates</a>
+                                    <a href="{{ path('app_contact') }}">Contact</a>
+                                    <a href="{{ path('app_this1312') }}">1312</a>
                             </div>
                             <div>
                                 <a href="#" class="user_toggler"
@@ -45,13 +45,13 @@
                                 <img src="./assets/img/fly_PNG3950.png" alt="user_icon">
                                 </a>
 
-                                <div> class="signs-btns">
+                                <div class="signs-btns">
                                     <button type="button">Sign In</button>
                                     <button type="button">Sign Up</button>
                                 </div>
                             </div>
                 </nav>
-            </header>
+</header>
         {% endblock %}
     
 </html>
