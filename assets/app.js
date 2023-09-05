@@ -9,6 +9,7 @@
 import './styles/app.css';
 import './styles/dates.css';
 import './styles/contact.css';
+import './styles/merchCreate.css';
 
 
 import Swup from 'swup';

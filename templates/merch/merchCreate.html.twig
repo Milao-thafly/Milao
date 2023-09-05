@@ -4,7 +4,7 @@
 
 {% block current_css %}
     {# <link rel="stylesheet" href="{{ asset('asset/style/merch.css') }}"> #}
-          {{ encore_entry_link_tags('merch') }}
+          {{ encore_entry_link_tags('merchCreate') }}
 {% endblock %}
 
 {% block body %}
@@ -45,7 +45,8 @@
                 </nav>
 </header>
 <main>
+{{ form_start(form) }}
 
-<div> </div>
+{{ form_end(form) }}
 </main>
 {% endblock %}

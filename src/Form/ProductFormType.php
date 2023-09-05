@@ -6,39 +6,41 @@ use App\Entity\Product;
 use App\Form\ProductFormType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Validator\Constraints\DateTime;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\DependencyInjection\Loader\Configurator\string;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
 
 class ProductFormType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('name', string::class,[
+            ->add('name',TextType::class, [
                 'label' => 'Nom:',
                 'required' => true
             ])
-            ->add('SKU', int::class, [
+            ->add('SKU', NumberType::class, [
                 'label' => 'SKU:',
                 'required' => true
             ])
-            ->add('category_id', int::class, [
+            ->add('category_id', NumberType::class, [
                 'label' => 'IdCategory:'
 
             ])
-            ->add('inventory_id', int::class , [
+            ->add('inventory_id', NumberType::class , [
                 'label' => 'IdInventory:'
             ])
-            ->add('price', int::class, [
+            ->add('price', NumberType::class, [
                 'label' => 'Prix:',
                 'required' => true
             ])
-            ->add('discount_id', int::class, [
+            ->add('discount_id', NumberType::class, [
                 'label' => 'Discount'
             ])
-            ->add('created_at', Date)
-            ->add('modified_at', Date)
-            ->add('deleted_at', Date)
+            // ->add('created_at', DateTime::class)
+            // ->add('modified_at', DateTime::class)
+            // ->add('deleted_at', DateTime::class)
         ;
     }
 
