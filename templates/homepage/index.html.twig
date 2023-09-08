@@ -46,29 +46,30 @@
 </header>
 
 <main>
-    {# <section class="background-slideshow image1" id="background">
-        <div class="slideshow">
-            <div class="button_slide"></div>
-            <button class="button-left" onclick="plusDivs(-1)">&#10094;</button>
-            <button class="button-right" onclick="plusDivs(+1)">&#10095;</button>
-        </div>
-    </section> #}
-    {# <div class="swiper">
 
-        <div class="swiper-wrapper">
-            <div class="swiper-slide" style="background-image:url(/assets/img/n.jpg)">Slide 1</div>
-            <div class="swiper-slide"style="background-image:url(/assets/img/0068.png)">Slide 2</div>
-            <div class="swiper-slide"style="background-image:url(/assets/img/0000.png)">Slide 3</div>
-        </div>
-    <div class="swiper-pagination"></div>
 
-    <div class="swiper-button-prev></div>
-    <div class"swiper-button-next"></div>
+    <section id="container">
+        <button class="previous">Avant</button>
 
-    <div class="swiper-scrollbar"></div>
-    </div> #}
-    <section aria-label="Newest Photo">
-    <div class="caroussel">
+        <figure>
+            {# <img src="./assets/img/n.jpg" alt=""> #}
+            <img src="{{ asset('/public/img/n.jpg') }}" alt="Symfony!"/>
+            <figcaption>Milao flies everywhere</figcaption>
+        </figure>
+
+        <figure>
+            {# <img src="./assets/img/0068.pgn" alt=""> #}
+            <img src="{{ asset('/assets/img/0068.png') }}" alt="Symfony!"/>
+            <figcaption>Animal in forest</figcaption>
+        </figure>
+
+        <figure>
+            {# <img src="./assets/img/0000.pgn" alt=""> #}
+            <img src="{{ asset('/img/0000.png') }}" alt="Symfony!"/>
+            <figcaption>The hostel</figcaption>
+        </figure>
+
+    {# <div class="caroussel">
         <ul>
             <li class="slide">
                 <img src={{ asset('img/n.jpg') }}
@@ -77,16 +78,20 @@
 
             </li>
         </ul>
-    </div>
+    </div> #}
+    <button class="next">Après</button>
+</section>
 
-    </section>
-
-   
+<script src="script.js"></script>  
 
 </main>
 
 <footer>
 </footer>
 
+{% endblock %}
+
+{% block current_javascript %}
+{{ encore_entry_script_tags('carrousel') }}
 {% endblock %}
 

@@ -2,12 +2,15 @@
 
 namespace App\Entity;
 
-use App\Repository\ProductRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Vich\UploaderBundle\Entity\File;
+use App\Repository\ProductRepository;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 #[ORM\Entity(repositoryClass: ProductRepository::class)]
+#[Vich\Uploadable]
 class Product
 {
     #[ORM\Id]
@@ -46,9 +49,54 @@ class Product
     #[ORM\JoinColumn(nullable: false)]
     private ?User $user = null;
 
+    #[Vich\UploadableField(mapping: 'products', fileNameProperty: 'imageName', size: 'imageSize')]
+    private ?File $imageFile = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $imageName = null;
+
+    #[ORM\Column(type: 'integer')]
+    private ?int $imageSize = null;
+
+    public function setImageFile(?File $imageFile = null): void
+    {
+        $this->imageFile = $imageFile;
+
+        if (null !== $imageFile) {
+
+            $this->updateAt = new \DateTimeImmutable();
+
+        }
+    }
+
+    public function getImageFile(): ?File
+    {
+        return $this->imageFile;
+    }
+
+    public function getImageName()
+    {
+        return $this->imageName;
+    }
+
+    public function setImageName(?string $imageName): void 
+    {
+        $this->imageName = $imageName;
+    }
+
+    public function setImageSize(?int $imageSize): void 
+    {
+        $this->imageSize = $imageSize;
+    }
+
+    public function getImageSize(): ?int
+    {
+        return $this->imageSize;
+    }
+
     public function __construct()
     {
-        $this->user = new ArrayCollection();
+        
         $this->products = new ArrayCollection();
         $this->User = new ArrayCollection();
     }
@@ -200,6 +248,8 @@ class Product
         return $this;
     }
 
+
+
     /**
      * @return Collection<int, self>
      */
@@ -241,4 +291,9 @@ class Product
 
         return $this;
     }
+
+    /**
+     * Get the value of imageName
+     */ 
+
 }

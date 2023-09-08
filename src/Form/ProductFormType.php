@@ -6,6 +6,7 @@ use App\Entity\Product;
 use App\Form\ProductFormType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Vich\UploaderBundle\Form\Type\VichImageType;
 use Symfony\Component\Validator\Constraints\DateTime;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -38,16 +39,24 @@ class ProductFormType extends AbstractType
             ->add('discount_id', NumberType::class, [
                 'label' => 'Discount'
             ])
-            // ->add('created_at', DateTime::class)
-            // ->add('modified_at', DateTime::class)
-            // ->add('deleted_at', DateTime::class)
-        ;
-    }
 
+            ->add('imageFile', VichImageType::class, [
+                'required' => false,
+                'download_uri' => false,
+                'image_uri' => true, 
+                'asset_helper' => true,
+                'label' => 'Image',
+            ]);
+
+
+
+    }
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
             'data_class' => Product::class,
         ]);
     }
+
+
 }

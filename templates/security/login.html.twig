@@ -4,19 +4,21 @@
 
 {% block body %}
     <div class="container">
-        <form action="{{ path('login')}}">
+
+        {{ form_start(LoginFormType)}}
+        {# < action="{{ path('security')}}">
         {% if error %}
         <div class="alert-danger" role="alert">{{
             error.messageKey|trans(error.messageData, 'security')
         }}</div>
-        {% endif %}
-        <h1 class="title"> Se connecter</h1>
+        {% endif %} #}
+        {# <h1 class="title"> Se connecter</h1>
         <label for="username" class="form-label"> Username: </label>
-        <input type="password" id="password" name="_password" class="form-control"/>
+        <input type="password" id="password" name="_password" class="form-control"/> #}
 
         <div class="submitContainer">
         <button type="submit" class="submit-btn">Seconnecter</button>
         </div>
-    </form>
+    {{ form_end(LoginFormType)}}
     </div>
 {% endblock %}
