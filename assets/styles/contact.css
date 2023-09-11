@@ -8,8 +8,9 @@
 body{
     
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    background: #f4f4f4;
-    height: 1320px;
+    width: 1760px;
+    height: 5800px;
+    background-color: black;
 
 
 }
@@ -170,4 +171,18 @@ position:static;
 
 }
 
+label{
+ padding-right: 500px;
+}
+.ContactArea{
+    display: flex;
+    justify-content: center;
+}
 
+.contactArea{
+    
+    position: absolute;
+
+    width: 400px;
+    height: 400px;
+}
