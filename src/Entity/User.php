@@ -21,41 +21,42 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 180, unique: true)]
     private ?string $username = null;
 
-    #[ORM\Column]
-    private array $roles = [];
-
+  
     /**
      * @var string The hashed password
      */
-    #[ORM\Column]
+    #[ORM\Column(length: 255)]
     private ?string $password = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 55)]
     private ?string $first_name = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 55)]
     private ?string $last_name = null;
 
     #[ORM\Column]
     private ?int $age = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 55)]
     private ?string $email = null;
 
     #[ORM\Column]
     private ?int $telephone = null;
-    
+
+    #[ORM\Column(type: 'json')]
+    private array $roles = [];
+        
     #[ORM\Column(length: 260, unique: true)]
     #[Gedmo\Slug(fields: ['id', 'titre'])]
-    private $slug;
+    private $slug = null;
     
     #[ORM\Column]
-    #[Gedmo\Timestampable(on:'update')]
+    #[Gedmo\Timestampable()]
     private ?\DateTimeImmutable $created_at = null;
 
     #[ORM\Column]
-    #[Gedmo\Timestampable(on: 'update')]
-    private ?\DateTimeImmutable $updated_at = null;
+    #[Gedmo\Timestampable()]
+    private ?\Datetime $updated_at = null;
 
     #[ORM\ManyToOne(inversedBy: 'User')]
     #[ORM\JoinColumn(nullable: false)]
@@ -67,6 +68,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function __construct()
     {
         $this->Product = new ArrayCollection();
+        // guarantee every user at least has ROLE_USER
+        $roles[] = 'ROLE_USER';
     }
 
     public function getId(): ?int
@@ -101,9 +104,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     public function getRoles(): array
     {
-        $roles = $this->roles;
-        // guarantee every user at least has ROLE_USER
-        $roles[] = 'ROLE_USER';
+        $roles[] = $this->roles;
+        
 
         return array_unique($roles);
     }
@@ -227,12 +229,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getUpdatedAt(): ?\DateTimeImmutable
+    public function getUpdatedAt(): ?\DateTime
     {
         return $this->updated_at;
     }
 
-    public function setUpdatedAt(\DateTimeImmutable $updated_at): static
+    public function setUpdatedAt(\DateTime $updated_at): static
     {
         $this->updated_at = $updated_at;
 
@@ -272,4 +274,5 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
         return $this;
     }
+
 }

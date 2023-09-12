@@ -51,12 +51,10 @@
                 </nav>
 </header>
 <main>
-    {# {% if RegistrationFormType is defined %}
-        {% for RegistrationFormType in form %} #}
+
             {{ form_start(RegistrationFormType) }}
 
             {{ form_end(RegistrationFormType) }}
-        {# {% endfor %}
-    {% endif %} #}
+</main>
     
 {% endblock %}

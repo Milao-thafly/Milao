@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\User;
 use App\Form\RegistrationFormType;
 use App\Repository\UserRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -14,7 +15,7 @@ use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 class RegisterController extends AbstractController
 {
     #[Route('/register', name: 'app_register')]
-    public function register(Request $request, UserPasswordHasherInterface  $passwordEncoder,UserRepository $repo): Response
+    public function register(Request $request,EntityManagerInterface $em, UserPasswordHasherInterface  $passwordEncoder,UserRepository $repo): Response
     {
         $user = new User();
 
@@ -23,17 +24,19 @@ class RegisterController extends AbstractController
 
         if($form->isSubmitted() && $form->isValid()) {
             $user->setPassword(
-                $passwordEncoder->hashpassword(
+                $passwordEncoder->hashPassword(
                     $user,
                     $form->get('password')->getData()
                 )
-                );
+            );
+            $em->persist($user);
+            $em->flush();
 
-                $repo->add($user, true);
+            // $repo->add($user, true);
 
-                $this->addFlash('success', 'Vous êtes bien inscrit à nos incroyable utilisateur');
+            $this->addFlash('success', 'Vous êtes bien inscrit à nos incroyables utilisateurs !');
 
-                return $this->redirectToRoute('login');
+            return $this->redirectToRoute('login');
         }
 
         return $this->render('security/register.html.twig', [
